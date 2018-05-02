@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+<div class='main-header'>VUE JS BOOT CAMP</div>
+<div class="charts">
+    <bar-chart :chartdata="comparisondata" :colors="chartColors" :textcolor="chartTextColor" title="Regional Sales"></bar-chart>
+    <pie-chart :chartdata="salesdata" :colors="chartColors" :textcolor="chartTextColor" title="Genres" hovertitle='Global Sales'></pie-chart>
+    <div class="rating-charts">
+        <label class='ratings-title' v-text="Object.keys(ratings).length == 0 ? '' : 'Critic Ratings'"></label>
+        <rating-chart v-for="(r,k,i) in ratings" :chartdata="r.Critic_Score != undefined ? r.Critic_Score : 0" :color="chartColors[0]" :text="k" :total="100"></rating-chart>
+    </div>
+</div>
+<user-interface :searchoptions="searchOptions" :namelist="namelist" :selectedtags="selectedtags"></user-interface>
+
